@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+const pressed = [];
+const secretCode = 'js30';
+
+window.addEventListener('keyup', (e) => {
+	//Add the pressed key to the pressed array
+	pressed.push(e.key);
+	//Trim the array to the size of secret code
+	pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+	//Check if the code matched
+	if (pressed.join('').includes(secretCode)){
+		//Print ding ding to console log
+		console.log('DING DING');
+		//Use cornify which adds a rainbow or unicorn to the screen 
+		cornify_add();
+	}
+});
+</script>
+</body>
+</html>
