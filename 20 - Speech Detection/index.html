@@ -30,6 +30,7 @@
       .map(result => result.transcript)
 	  //Join all the spoken strings together
       .join('');
+	  console.log(result.transcript);
 	  console.log(4);
       //isFinal determines if a user has stopped speaking
       if (e.results[0].isFinal) {
