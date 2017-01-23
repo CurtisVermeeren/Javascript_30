@@ -16,20 +16,21 @@
   //Create new instance of speech recognition
   const recognition = new SpeechRecognition();
   recognition.interimResults = true;
-
+  console.log(1);
   //Create a paragraph
   let p = document.createElement('p');
   const words = document.querySelector('.words');
   words.appendChild(p);
-
+  console.log(2);
   //Listen for Speech Recognition results
   recognition.addEventListener('result', e => {
+	console.log(3);
     const transcript = Array.from(e.results)
       .map(result => result[0])
       .map(result => result.transcript)
 	  //Join all the spoken strings together
       .join('');
-
+	  console.log(4);
       //isFinal determines if a user has stopped speaking
       if (e.results[0].isFinal) {
 		//Create a new paragraph
@@ -40,7 +41,7 @@
 
   //Listen when the speech event ends. Rerun the function for the next speech event
   recognition.addEventListener('end', recognition.start);
-
+  console.log(5);
   recognition.start();
 
 </script>
