@@ -45,7 +45,7 @@
   function logText(e) {
 	  console.log(this.classList.value);
 	  //Stops bubbling and events on parents
-	  e.stopPropaation();
+	  e.stopPropagation();
   }
 
   document.body.addEventListener('click',logText);
