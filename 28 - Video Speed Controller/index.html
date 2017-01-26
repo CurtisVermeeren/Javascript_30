@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Speed Scrubber</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrapper">
+    <video class="flex" width="765" height="430" src="https://www.dropbox.com/s/nf6jfkwck1glsyo/12%20-%20flex-wrapping-and-columns.mp4?dl=1" loop controls autoplay></video>
+    <div class="speed">
+      <div class="speed-bar">1×</div>
+    </div>
+  </div>
+
+<script>
+	const speed = document.querySelector('.speed');
+	const bar  = speed.querySelector('.speed-bar');
+	const video = document.querySelector('.flex');
+
+	speed.addEventListener('mousemove', function(e){
+		//Compensate for any offset at the top
+		const y = e.pageY - this.offsetTop;
+		//Get percent of the bar
+		const percent = y / this.offsetHeight;
+		//Set min and maximum values
+		const min = 0.4;
+		const max = 4;
+		//Style the bar with the percent the mouse is at in the bar
+		const height = Math.round(percent * 100) + '%';
+		bar.style.height = height;
+
+		//Set playback rate
+		const playbackRate = percent * (max - min) + min;
+		//Set bar text to the playback rate
+		bar.textContent = playbackRate.toFixed(2) + 'x';
+		//Set the playback rate of the video
+		video.playbackRate = playbackRate;
+})
+</script>
+</body>
+</html>
